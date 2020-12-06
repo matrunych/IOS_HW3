@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5243A380257D2FE300F2EE1B /* NoteModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5243A37E257D2FE300F2EE1B /* NoteModel.xcdatamodeld */; };
+		528A4DE5257D263800A66553 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528A4DE4257D263800A66553 /* CoreDataStorage.swift */; };
 		52949A6325573D1500854A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52949A6225573D1500854A79 /* AppDelegate.swift */; };
 		52949A6525573D1500854A79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52949A6425573D1500854A79 /* SceneDelegate.swift */; };
 		52949A6725573D1500854A79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52949A6625573D1500854A79 /* ViewController.swift */; };
@@ -19,8 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5243A37F257D2FE300F2EE1B /* NoteModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoteModel.xcdatamodel; sourceTree = "<group>"; };
+		528A4DE4257D263800A66553 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		52949A5F25573D1500854A79 /* new_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = new_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		52949A6225573D1500854A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		52949A6225573D1500854A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		52949A6425573D1500854A79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		52949A6625573D1500854A79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52949A6925573D1500854A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 		52949A6125573D1500854A79 /* new_app */ = {
 			isa = PBXGroup;
 			children = (
+				5243A37E257D2FE300F2EE1B /* NoteModel.xcdatamodeld */,
 				52949A6225573D1500854A79 /* AppDelegate.swift */,
 				52949A6425573D1500854A79 /* SceneDelegate.swift */,
 				52949A6625573D1500854A79 /* ViewController.swift */,
@@ -72,6 +77,7 @@
 				52949A6D25573D1B00854A79 /* LaunchScreen.storyboard */,
 				52949A7025573D1B00854A79 /* Info.plist */,
 				52949A7A2557400E00854A79 /* Note.swift */,
+				528A4DE4257D263800A66553 /* CoreDataStorage.swift */,
 			);
 			path = new_app;
 			sourceTree = "<group>";
@@ -147,10 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				528A4DE5257D263800A66553 /* CoreDataStorage.swift in Sources */,
 				52949A7B2557400E00854A79 /* Note.swift in Sources */,
 				52949A6725573D1500854A79 /* ViewController.swift in Sources */,
 				52949A7D2557413800854A79 /* EditViewController.swift in Sources */,
 				52949A7725573E3900854A79 /* NotesTableViewController.swift in Sources */,
+				5243A380257D2FE300F2EE1B /* NoteModel.xcdatamodeld in Sources */,
 				52949A6325573D1500854A79 /* AppDelegate.swift in Sources */,
 				52949A6525573D1500854A79 /* SceneDelegate.swift in Sources */,
 			);
@@ -348,6 +356,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5243A37E257D2FE300F2EE1B /* NoteModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5243A37F257D2FE300F2EE1B /* NoteModel.xcdatamodel */,
+			);
+			currentVersion = 5243A37F257D2FE300F2EE1B /* NoteModel.xcdatamodel */;
+			name = NoteModel.xcdatamodeld;
+			path = ../NoteModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 52949A5725573D1500854A79 /* Project object */;
 }

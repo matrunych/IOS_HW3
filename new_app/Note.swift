@@ -8,14 +8,16 @@ struct Note {
     var tags : Set<String>
     var isFavourite: Bool = false
     var creationDate: Date
-    var deletionDate: Date?
+    var deletionDate: Date
     
-    init(noteId: Int, name: String = "", text: String = ""){
+    init(noteId: Int, name: String = "", text: String = "", tags: Set<String> = [], isFavourite: Bool = false, creationDate: Date = Date(), deletionDate: Date = Date()){
         self.noteId = noteId
         self.name = name
         self.text = text
-        self.tags = []
-        self.creationDate = Date()
+        self.tags = tags
+        self.isFavourite = isFavourite
+        self.creationDate = creationDate
+        self.deletionDate = deletionDate
     }
     
     mutating func makeFavourite(){
@@ -29,19 +31,42 @@ struct Note {
 
 
 class NoteDataManager{
-    var notes = [Note]()
+    var notes: [Note]
     var deletedNotes = [Note]()
     var id: Int
     
+    var storage = CoreDataStorage()
+
+    
     init() {
-        self.notes = []
+//        do {
+//            try  storage.deleteAllData()
+//        } catch {
+//            self.notes = []
+//            print("error")
+//        }
+       
+
+        do {
+            self.notes = try storage.fetchNote()
+        } catch {
+            self.notes = []
+            print("error")
+        }
         self.deletedNotes = []
         self.id = 0
     }
     
     func createNote(name: String, text: String, tags: Set<String>){
         notes.append(Note(noteId: id, name: name, text: text))
-        id += 1
+        
+        do{
+            try self.storage.save(note: Note(noteId: id, name: name, text: text))
+        } catch {
+            print("error")
+        }
+        
+        self.id += 1
     }
     
     func deleteNote(noteId: Int){
@@ -49,18 +74,37 @@ class NoteDataManager{
         self.notes[index].makeDeleted()
         self.deletedNotes.append(self.notes[index])
         self.notes.remove(at: index)
+        
+        do{
+            try self.storage.deleteNote(noteId: id)
+        } catch {
+            print("error")
+        }
+        
     }
     
     func updateName(noteId: Int, newName: String){
         let index = self.notes.firstIndex(where: { $0.noteId == noteId })!
         self.notes[index].name = newName
+        do{
+            try self.storage.updateNote(noteId: noteId, newValue: newName, oldValue: "name")
+        } catch {
+            print("error")
+        }
+
     }
     
     func updateText(noteId: Int, newText: String){
         let index = self.notes.firstIndex(where: { $0.noteId == noteId })!
         self.notes[index].text = newText
+        do{
+            try self.storage.updateNote(noteId: noteId, newValue: newText, oldValue: "text")
+        } catch {
+            print("error")
+        }
+
     }
-    
+        
     func updateTags(noteId: Int, newTags: Set<String>){
         let index = self.notes.firstIndex(where: { $0.noteId == noteId })!
         self.notes[index].tags = newTags

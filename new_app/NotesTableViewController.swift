@@ -21,7 +21,8 @@ class NotesTableViewController: UITableViewController, EditNoteDelegate {
 
     var notesManager = NoteDataManager()
     var idx = -1
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +55,7 @@ class NotesTableViewController: UITableViewController, EditNoteDelegate {
             self.notesManager.deleteNote(noteId: toDelete.noteId)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
+            
         }
     }
     
@@ -62,6 +64,7 @@ class NotesTableViewController: UITableViewController, EditNoteDelegate {
             let toDelete = self.notesManager.notes[indexPath.row]
             self.notesManager.deleteNote(noteId: toDelete.noteId)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            self.idx -= 1
         }
 
         let favourite = UITableViewRowAction(style: .normal, title: "Favourite") { (action, indexPath) in
@@ -75,8 +78,13 @@ class NotesTableViewController: UITableViewController, EditNoteDelegate {
     }
     
     func updateNote(newTitle: String, newBody: String){
-        self.notesManager.notes[idx].name = newTitle
-        self.notesManager.notes[idx].text = newBody
+//        self.notesManager.notes[idx].name = newTitle
+//        self.notesManager.notes[idx].text = newBody
+
+        let noteId = self.notesManager.notes[idx].noteId
+        self.notesManager.updateName(noteId: idx, newName: newTitle)
+        self.notesManager.updateText(noteId: idx, newText: newBody)
+
         self.tableView.reloadData()
         
     }
